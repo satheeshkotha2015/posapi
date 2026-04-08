@@ -52,8 +52,8 @@ spec:
     spec:
       containers:
         - name: pos-api
-          image: pos-api:latest
-          imagePullPolicy: Never
+          image: airuniam/pos-api:latest
+          imagePullPolicy: Always
           env:
             - name: ConnectionStrings__DefaultConnection
               value: "Server=sqlserver,1433;Database=PosDb;User Id=sa;Password=StrongPass@123;TrustServerCertificate=True;"
