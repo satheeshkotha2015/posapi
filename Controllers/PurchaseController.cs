@@ -42,6 +42,20 @@ public class PurchaseController : ControllerBase
     [HttpPost("testpurchase")]
     public async Task<ActionResult<PurchaseResponseDto>> TestPurchase([FromBody] PurchaseRequestDto request)
     {
-        return Ok("test");
+        _logger.LogInformation("Purchase request received - Customer: {CustomerId}, Amount: {Amount}", 
+            request.CustomerId, request.Amount);
+
+        if (request.Amount <= 0)
+        {
+            return BadRequest(new { message = "Amount must be greater than 0" });
+        }
+
+        var response = await _purchaseService.ProcessPurchaseAsync(request);
+        if (!response.Success)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, response);
+        }
+
+        return Ok(response);
     }
 }
