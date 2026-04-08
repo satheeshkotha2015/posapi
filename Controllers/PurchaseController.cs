@@ -40,7 +40,7 @@ public class PurchaseController : ControllerBase
     }
 
     [HttpPost("testpurchase")]
-    public async Task<ActionResult<PurchaseResponseDto>> ProcessPurchase([FromBody] PurchaseRequestDto request)
+    public async Task<ActionResult<PurchaseResponseDto>> TestPurchase([FromBody] PurchaseRequestDto request)
     {
         return Ok("test");
     }
