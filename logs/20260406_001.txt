@@ -1,0 +1,525 @@
+2026-04-06 11:53:36.096 +05:30 [INF] Initializing database...
+2026-04-06 11:53:36.465 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 11:53:36.520 +05:30 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 11:53:36.523 +05:30 [INF] Database initialized successfully
+2026-04-06 11:53:36.562 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 11:53:36.593 +05:30 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.DefaultAddressStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-04-06 11:53:36.615 +05:30 [FTL] Application terminated unexpectedly
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.DefaultAddressStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Program.<Main>$(String[] args) in C:\AI-P\RetailPOS\Backend\PosApi\Program.cs:line 116
+2026-04-06 12:00:49.740 +05:30 [INF] Initializing database...
+2026-04-06 12:00:50.144 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 12:00:50.194 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 12:00:50.199 +05:30 [INF] Database initialized successfully
+2026-04-06 12:00:50.246 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 12:00:50.273 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 12:00:50.275 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 12:00:50.276 +05:30 [INF] Hosting environment: Production
+2026-04-06 12:00:50.277 +05:30 [INF] Content root path: C:\AI-P\RetailPOS\Backend\PosApi
+2026-04-06 12:06:22.580 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - null null
+2026-04-06 12:06:22.628 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-06 12:06:22.667 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - 404 0 null 89.5662ms
+2026-04-06 12:06:22.681 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/, Response status code: 404
+2026-04-06 12:06:50.525 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 12:06:50.534 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 404 0 null 8.8442ms
+2026-04-06 12:06:50.544 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/index.html, Response status code: 404
+2026-04-06 12:06:53.481 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 12:06:53.502 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 404 0 null 21.6178ms
+2026-04-06 12:06:53.520 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/index.html, Response status code: 404
+2026-04-06 17:55:26.043 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 17:55:26.053 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 404 0 null 9.4061ms
+2026-04-06 17:55:26.068 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/index.html, Response status code: 404
+2026-04-06 19:19:12.023 +05:30 [INF] Initializing database...
+2026-04-06 19:19:12.412 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 19:19:12.461 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 19:19:12.466 +05:30 [INF] Database initialized successfully
+2026-04-06 19:19:12.514 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 19:19:12.599 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 19:19:12.602 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 19:19:12.602 +05:30 [INF] Hosting environment: Production
+2026-04-06 19:19:12.603 +05:30 [INF] Content root path: C:\ai-p\RetailPOS\Backend\PosApi
+2026-04-06 19:19:53.764 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 19:19:54.003 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 240.5209ms
+2026-04-06 19:19:54.033 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - null null
+2026-04-06 19:19:54.036 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - null null
+2026-04-06 19:19:54.036 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - null null
+2026-04-06 19:19:54.116 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-04-06 19:19:54.116 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-04-06 19:19:54.125 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - 200 143171 text/css 91.4869ms
+2026-04-06 19:19:54.127 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - 200 332754 text/javascript 90.8434ms
+2026-04-06 19:19:54.131 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-04-06 19:19:54.144 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - 200 1056524 text/javascript 107.8681ms
+2026-04-06 19:19:54.216 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2026-04-06 19:19:54.235 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - null null
+2026-04-06 19:19:54.241 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-04-06 19:19:54.246 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - 200 628 image/png 10.4189ms
+2026-04-06 19:19:54.346 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 129.7605ms
+2026-04-06 19:20:30.660 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 19:20:30.674 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-06 19:20:30.739 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 79.6385ms
+2026-04-06 19:20:30.757 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 19:20:54.025 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 39
+2026-04-06 19:20:54.041 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:20:54.055 +05:30 [INF] Executing endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:20:54.109 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.LoginResponseDto]] Login(PosApi.DTOs.LoginRequestDto) on controller PosApi.Controllers.AuthController (PosApi).
+2026-04-06 19:20:54.175 +05:30 [INF] Login endpoint called for user: admin
+2026-04-06 19:20:54.183 +05:30 [INF] Login attempt for user: admin
+2026-04-06 19:20:54.186 +05:30 [WRN] Invalid credentials for user: admin
+2026-04-06 19:20:54.194 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'PosApi.DTOs.LoginResponseDto'.
+2026-04-06 19:20:54.211 +05:30 [INF] Executed action PosApi.Controllers.AuthController.Login (PosApi) in 87.8374ms
+2026-04-06 19:20:54.215 +05:30 [INF] Executed endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:20:54.217 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 401 null application/json; charset=utf-8 191.2614ms
+2026-04-06 19:21:53.146 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 45
+2026-04-06 19:21:53.155 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:21:53.164 +05:30 [INF] Executing endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:21:53.168 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.LoginResponseDto]] Login(PosApi.DTOs.LoginRequestDto) on controller PosApi.Controllers.AuthController (PosApi).
+2026-04-06 19:21:53.175 +05:30 [INF] Login endpoint called for user: admin
+2026-04-06 19:21:53.179 +05:30 [INF] Login attempt for user: admin
+2026-04-06 19:21:53.237 +05:30 [INF] Login successful for user: admin
+2026-04-06 19:21:53.243 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.LoginResponseDto'.
+2026-04-06 19:21:53.248 +05:30 [INF] Executed action PosApi.Controllers.AuthController.Login (PosApi) in 75.306ms
+2026-04-06 19:21:53.251 +05:30 [INF] Executed endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:21:53.254 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 108.6894ms
+2026-04-06 19:23:25.333 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 19:23:25.343 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 10.7779ms
+2026-04-06 19:23:25.354 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 19:23:46.591 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 36
+2026-04-06 19:23:46.602 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:23:46.617 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-06 19:23:46.627 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-04-06 19:23:46.631 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 401 0 null 39.9327ms
+2026-04-06 19:27:01.177 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 36
+2026-04-06 19:27:01.189 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:27:01.195 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-06 19:27:01.198 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-04-06 19:27:01.201 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 401 0 null 24.2656ms
+2026-04-06 19:36:27.959 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 36
+2026-04-06 19:36:27.965 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:36:27.972 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-06 19:36:27.976 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-04-06 19:36:27.979 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 401 0 null 19.5478ms
+2026-04-06 19:38:52.690 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 45
+2026-04-06 19:38:52.695 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:38:52.697 +05:30 [INF] Executing endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:38:52.701 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.LoginResponseDto]] Login(PosApi.DTOs.LoginRequestDto) on controller PosApi.Controllers.AuthController (PosApi).
+2026-04-06 19:38:52.711 +05:30 [INF] Login endpoint called for user: admin
+2026-04-06 19:38:52.714 +05:30 [INF] Login attempt for user: admin
+2026-04-06 19:38:52.718 +05:30 [INF] Login successful for user: admin
+2026-04-06 19:38:52.723 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.LoginResponseDto'.
+2026-04-06 19:38:52.727 +05:30 [INF] Executed action PosApi.Controllers.AuthController.Login (PosApi) in 18.9464ms
+2026-04-06 19:38:52.731 +05:30 [INF] Executed endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:38:52.735 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 44.3363ms
+2026-04-06 19:41:05.517 +05:30 [INF] Application is shutting down...
+2026-04-06 19:41:12.408 +05:30 [INF] Initializing database...
+2026-04-06 19:41:12.794 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 19:41:12.846 +05:30 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 19:41:12.850 +05:30 [INF] Database initialized successfully
+2026-04-06 19:41:12.891 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 19:41:12.923 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 19:41:12.926 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 19:41:12.927 +05:30 [INF] Hosting environment: Production
+2026-04-06 19:41:12.930 +05:30 [INF] Content root path: C:\ai-p\RetailPOS\Backend\PosApi
+2026-04-06 19:41:19.609 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 19:41:19.774 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 166.7853ms
+2026-04-06 19:41:19.892 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2026-04-06 19:41:20.040 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 147.597ms
+2026-04-06 19:41:23.207 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 19:41:23.220 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-06 19:41:23.261 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 54.3918ms
+2026-04-06 19:41:23.274 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 19:41:49.566 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 45
+2026-04-06 19:41:49.584 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:41:49.594 +05:30 [INF] Executing endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:41:49.640 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.LoginResponseDto]] Login(PosApi.DTOs.LoginRequestDto) on controller PosApi.Controllers.AuthController (PosApi).
+2026-04-06 19:41:49.678 +05:30 [INF] Login endpoint called for user: admin
+2026-04-06 19:41:49.707 +05:30 [INF] Login attempt for user: admin
+2026-04-06 19:41:49.742 +05:30 [INF] Login successful for user: admin
+2026-04-06 19:41:49.755 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.LoginResponseDto'.
+2026-04-06 19:41:49.773 +05:30 [INF] Executed action PosApi.Controllers.AuthController.Login (PosApi) in 119.2876ms
+2026-04-06 19:41:49.779 +05:30 [INF] Executed endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 19:41:49.783 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 216.8165ms
+2026-04-06 19:42:19.440 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 19:42:19.460 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 19.7076ms
+2026-04-06 19:42:19.469 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 19:42:27.944 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 36
+2026-04-06 19:42:27.955 +05:30 [INF] CORS policy execution successful.
+2026-04-06 19:42:28.042 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 19:42:28.056 +05:30 [INF] Route matched with {action = "ProcessPurchase", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PurchaseResponseDto]] ProcessPurchase(PosApi.DTOs.PurchaseRequestDto) on controller PosApi.Controllers.PurchaseController (PosApi).
+2026-04-06 19:42:28.109 +05:30 [INF] Purchase request received - Customer: string, Amount: 500
+2026-04-06 19:42:28.118 +05:30 [INF] Processing purchase for customer: string, Amount: 500
+2026-04-06 19:42:28.456 +05:30 [INF] Executed DbCommand (81ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = DateTime2), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([Amount], [CreatedAt], [TransactionId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-04-06 19:42:28.533 +05:30 [INF] Purchase successful: c254d071-389
+2026-04-06 19:42:28.540 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.PurchaseResponseDto'.
+2026-04-06 19:42:28.552 +05:30 [INF] Executed action PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi) in 489.0113ms
+2026-04-06 19:42:28.557 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 19:42:28.569 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 200 null application/json; charset=utf-8 625.5908ms
+2026-04-06 20:07:09.772 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 20:07:09.787 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 14.2238ms
+2026-04-06 20:07:09.802 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 20:07:18.971 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - application/json 48
+2026-04-06 20:07:18.981 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:07:18.988 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:07:19.000 +05:30 [INF] Route matched with {action = "ApplyPromotion", controller = "Promotion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PromotionResponseDto]] ApplyPromotion(PosApi.DTOs.PromotionRequestDto) on controller PosApi.Controllers.PromotionController (PosApi).
+2026-04-06 20:07:19.096 +05:30 [INF] Promotion apply request - TransactionId: c254d071-389, PromotionId: 0
+2026-04-06 20:07:19.101 +05:30 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-06 20:07:19.108 +05:30 [INF] Executed action PosApi.Controllers.PromotionController.ApplyPromotion (PosApi) in 101.8842ms
+2026-04-06 20:07:19.110 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:07:19.114 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - 400 null application/json; charset=utf-8 143.0656ms
+2026-04-06 20:08:48.635 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - application/json 48
+2026-04-06 20:08:48.643 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:08:48.653 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:08:48.656 +05:30 [INF] Route matched with {action = "ApplyPromotion", controller = "Promotion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PromotionResponseDto]] ApplyPromotion(PosApi.DTOs.PromotionRequestDto) on controller PosApi.Controllers.PromotionController (PosApi).
+2026-04-06 20:08:48.665 +05:30 [INF] Promotion apply request - TransactionId: c254d071-389, PromotionId: 1
+2026-04-06 20:08:48.672 +05:30 [INF] Applying promotion 1 to transaction c254d071-389
+2026-04-06 20:08:49.086 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__transactionId_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[Amount], [t].[CreatedAt], [t].[TransactionId]
+FROM [Transactions] AS [t]
+WHERE [t].[TransactionId] = @__transactionId_0
+2026-04-06 20:08:49.168 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[DiscountAmount], [p].[IsActive], [p].[MinAmount], [p].[Name]
+FROM [Promotions] AS [p]
+WHERE [p].[Id] = @__p_0
+2026-04-06 20:08:49.192 +05:30 [INF] Promotion 1 applied successfully
+2026-04-06 20:08:49.197 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.PromotionResponseDto'.
+2026-04-06 20:08:49.203 +05:30 [INF] Executed action PosApi.Controllers.PromotionController.ApplyPromotion (PosApi) in 541.5866ms
+2026-04-06 20:08:49.206 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:08:49.210 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - 200 null application/json; charset=utf-8 574.8579ms
+2026-04-06 20:10:43.197 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 35
+2026-04-06 20:10:43.207 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:10:43.212 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 20:10:43.217 +05:30 [INF] Route matched with {action = "ProcessPurchase", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PurchaseResponseDto]] ProcessPurchase(PosApi.DTOs.PurchaseRequestDto) on controller PosApi.Controllers.PurchaseController (PosApi).
+2026-04-06 20:10:43.229 +05:30 [INF] Purchase request received - Customer: string, Amount: 45
+2026-04-06 20:10:43.236 +05:30 [INF] Processing purchase for customer: string, Amount: 45
+2026-04-06 20:10:43.256 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = DateTime2), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([Amount], [CreatedAt], [TransactionId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-04-06 20:10:43.263 +05:30 [INF] Purchase successful: 481be692-99b
+2026-04-06 20:10:43.266 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.PurchaseResponseDto'.
+2026-04-06 20:10:43.269 +05:30 [INF] Executed action PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi) in 43.6983ms
+2026-04-06 20:10:43.273 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 20:10:43.276 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 200 null application/json; charset=utf-8 79.238ms
+2026-04-06 20:10:59.960 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - application/json 48
+2026-04-06 20:10:59.967 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:10:59.972 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:10:59.976 +05:30 [INF] Route matched with {action = "ApplyPromotion", controller = "Promotion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PromotionResponseDto]] ApplyPromotion(PosApi.DTOs.PromotionRequestDto) on controller PosApi.Controllers.PromotionController (PosApi).
+2026-04-06 20:10:59.993 +05:30 [INF] Promotion apply request - TransactionId: 481be692-99b, PromotionId: 1
+2026-04-06 20:11:00.001 +05:30 [INF] Applying promotion 1 to transaction 481be692-99b
+2026-04-06 20:11:00.022 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__transactionId_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[Amount], [t].[CreatedAt], [t].[TransactionId]
+FROM [Transactions] AS [t]
+WHERE [t].[TransactionId] = @__transactionId_0
+2026-04-06 20:11:00.040 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[DiscountAmount], [p].[IsActive], [p].[MinAmount], [p].[Name]
+FROM [Promotions] AS [p]
+WHERE [p].[Id] = @__p_0
+2026-04-06 20:11:00.048 +05:30 [INF] Transaction amount 45.00 below promotion minimum 50.00
+2026-04-06 20:11:00.051 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.PromotionResponseDto'.
+2026-04-06 20:11:00.054 +05:30 [INF] Executed action PosApi.Controllers.PromotionController.ApplyPromotion (PosApi) in 69.5917ms
+2026-04-06 20:11:00.058 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PromotionController.ApplyPromotion (PosApi)'
+2026-04-06 20:11:00.062 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Promotion/apply - 200 null application/json; charset=utf-8 101.4815ms
+2026-04-06 20:13:52.008 +05:30 [INF] Application is shutting down...
+2026-04-06 20:27:17.526 +05:30 [INF] Initializing database...
+2026-04-06 20:27:17.731 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-06 20:27:17.912 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 20:27:17.952 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 20:27:17.956 +05:30 [INF] Database initialized successfully
+2026-04-06 20:27:17.996 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 20:27:18.025 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 20:27:18.027 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 20:27:18.028 +05:30 [INF] Hosting environment: Production
+2026-04-06 20:27:18.029 +05:30 [INF] Content root path: C:\ai-p\RetailPOS\Backend\PosApi
+2026-04-06 20:27:25.755 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-06 20:27:25.894 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 139.9337ms
+2026-04-06 20:27:25.947 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2026-04-06 20:27:26.057 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 110.0303ms
+2026-04-06 20:27:29.005 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 20:27:29.024 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-06 20:27:29.071 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 65.4872ms
+2026-04-06 20:27:29.085 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 20:27:53.964 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 45
+2026-04-06 20:27:53.978 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:27:53.988 +05:30 [INF] Executing endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 20:27:54.023 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.LoginResponseDto]] Login(PosApi.DTOs.LoginRequestDto) on controller PosApi.Controllers.AuthController (PosApi).
+2026-04-06 20:27:54.065 +05:30 [INF] Login endpoint called for user: admin
+2026-04-06 20:27:54.071 +05:30 [INF] Login attempt for user: admin
+2026-04-06 20:27:54.096 +05:30 [INF] Login successful for user: admin
+2026-04-06 20:27:54.104 +05:30 [INF] Executing OkObjectResult, writing value of type 'PosApi.DTOs.LoginResponseDto'.
+2026-04-06 20:27:54.114 +05:30 [INF] Executed action PosApi.Controllers.AuthController.Login (PosApi) in 79.6224ms
+2026-04-06 20:27:54.118 +05:30 [INF] Executed endpoint 'PosApi.Controllers.AuthController.Login (PosApi)'
+2026-04-06 20:27:54.120 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 156.7893ms
+2026-04-06 20:28:19.317 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - null null
+2026-04-06 20:28:19.333 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/[object Module] - 404 0 null 15.9126ms
+2026-04-06 20:28:19.343 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger/%5Bobject%20Module%5D, Response status code: 404
+2026-04-06 20:28:29.756 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Purchase/process - application/json 36
+2026-04-06 20:28:29.767 +05:30 [INF] CORS policy execution successful.
+2026-04-06 20:28:29.832 +05:30 [INF] Executing endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 20:28:29.844 +05:30 [INF] Route matched with {action = "ProcessPurchase", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PosApi.DTOs.PurchaseResponseDto]] ProcessPurchase(PosApi.DTOs.PurchaseRequestDto) on controller PosApi.Controllers.PurchaseController (PosApi).
+2026-04-06 20:28:29.881 +05:30 [INF] Purchase request received - Customer: string, Amount: 500
+2026-04-06 20:28:29.887 +05:30 [INF] Processing purchase for customer: string, Amount: 500
+2026-04-06 20:28:30.187 +05:30 [ERR] Failed executing DbCommand (42ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([Amount], [CreatedAt], [DiscountApplied], [PromotionId], [TransactionId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-04-06 20:28:30.233 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'PosApi.Data.PosDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DiscountApplied'.
+Invalid column name 'PromotionId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:84a86259-38d4-40d9-8266-642c096011eb
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DiscountApplied'.
+Invalid column name 'PromotionId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:84a86259-38d4-40d9-8266-642c096011eb
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-04-06 20:28:30.255 +05:30 [ERR] Error processing purchase
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DiscountApplied'.
+Invalid column name 'PromotionId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:84a86259-38d4-40d9-8266-642c096011eb
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PosApi.Repositories.GenericRepository`1.SaveChangesAsync() in C:\ai-p\RetailPOS\Backend\PosApi\Repositories\GenericRepository.cs:line 46
+   at PosApi.Services.PurchaseService.ProcessPurchaseAsync(PurchaseRequestDto request) in C:\ai-p\RetailPOS\Backend\PosApi\Services\PurchaseService.cs:line 51
+2026-04-06 20:28:30.326 +05:30 [INF] Executing ObjectResult, writing value of type 'PosApi.DTOs.PurchaseResponseDto'.
+2026-04-06 20:28:30.339 +05:30 [INF] Executed action PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi) in 489.654ms
+2026-04-06 20:28:30.346 +05:30 [INF] Executed endpoint 'PosApi.Controllers.PurchaseController.ProcessPurchase (PosApi)'
+2026-04-06 20:28:30.361 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Purchase/process - 500 null application/json; charset=utf-8 604.9631ms
+2026-04-06 20:30:43.710 +05:30 [INF] Application is shutting down...
+2026-04-06 20:41:48.472 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-06 20:41:48.557 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-06 20:42:00.972 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-06 20:42:01.233 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 20:42:01.253 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-06 20:42:01.258 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 20:42:01.306 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2026-04-06 20:42:01.312 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 20:42:01.315 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-06 20:42:01.319 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-06 20:42:01.328 +05:30 [INF] Applying migration '20260406151148_AddDiscountFields'.
+2026-04-06 20:42:01.380 +05:30 [ERR] Failed executing DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CashbackRequests] (
+    [Id] int NOT NULL IDENTITY,
+    [TransactionId] nvarchar(50) NOT NULL,
+    [Amount] decimal(18,2) NOT NULL,
+    [Status] int NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_CashbackRequests] PRIMARY KEY ([Id])
+);

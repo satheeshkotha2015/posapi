@@ -1,0 +1,33 @@
+2026-04-07 08:56:20.343 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-07 08:56:20.448 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-07 08:57:05.337 +05:30 [INF] Initializing database...
+2026-04-07 08:57:05.541 +05:30 [WRN] No store type was specified for the decimal property 'DiscountApplied' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-07 08:57:05.740 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-07 08:57:05.782 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-07 08:57:05.788 +05:30 [INF] Database initialized successfully
+2026-04-07 08:57:05.826 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-07 08:57:05.996 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-07 08:57:06.000 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-07 08:57:06.000 +05:30 [INF] Hosting environment: Production
+2026-04-07 08:57:06.001 +05:30 [INF] Content root path: C:\AI-P\RetailPOS\Backend\PosApi
+2026-04-07 08:57:14.487 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2026-04-07 08:57:14.663 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 178.2539ms
+2026-04-07 08:57:14.755 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2026-04-07 08:57:14.879 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 123.4054ms
+2026-04-07 10:20:03.337 +05:30 [INF] Application is shutting down...

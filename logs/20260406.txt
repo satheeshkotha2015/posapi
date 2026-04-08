@@ -1,0 +1,100 @@
+2026-04-06 11:49:36.648 +05:30 [INF] Initializing database...
+2026-04-06 11:49:39.426 +05:30 [INF] Executed DbCommand (509ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [PosDb];
+2026-04-06 11:49:39.679 +05:30 [INF] Executed DbCommand (243ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [PosDb] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-04-06 11:49:39.708 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 11:49:39.853 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CashbackRequests] (
+    [Id] int NOT NULL IDENTITY,
+    [TransactionId] nvarchar(50) NOT NULL,
+    [Amount] decimal(18,2) NOT NULL,
+    [Status] int NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_CashbackRequests] PRIMARY KEY ([Id])
+);
+2026-04-06 11:49:39.867 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Promotions] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(100) NOT NULL,
+    [MinAmount] decimal(18,2) NOT NULL,
+    [DiscountAmount] decimal(18,2) NOT NULL,
+    [IsActive] bit NOT NULL,
+    CONSTRAINT [PK_Promotions] PRIMARY KEY ([Id])
+);
+2026-04-06 11:49:39.879 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Transactions] (
+    [Id] int NOT NULL IDENTITY,
+    [TransactionId] nvarchar(50) NOT NULL,
+    [Amount] decimal(18,2) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Transactions] PRIMARY KEY ([Id])
+);
+2026-04-06 11:49:39.892 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Wallets] (
+    [Id] int NOT NULL IDENTITY,
+    [CustomerId] nvarchar(50) NOT NULL,
+    [Balance] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_Wallets] PRIMARY KEY ([Id])
+);
+2026-04-06 11:49:40.003 +05:30 [INF] Executed DbCommand (103ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'DiscountAmount', N'IsActive', N'MinAmount', N'Name') AND [object_id] = OBJECT_ID(N'[Promotions]'))
+    SET IDENTITY_INSERT [Promotions] ON;
+INSERT INTO [Promotions] ([Id], [DiscountAmount], [IsActive], [MinAmount], [Name])
+VALUES (1, 5.0, CAST(1 AS bit), 50.0, N'10% Off'),
+(2, 15.0, CAST(1 AS bit), 100.0, N'15% Off'),
+(3, 10.0, CAST(1 AS bit), 75.0, N'Seasonal Sale');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'DiscountAmount', N'IsActive', N'MinAmount', N'Name') AND [object_id] = OBJECT_ID(N'[Promotions]'))
+    SET IDENTITY_INSERT [Promotions] OFF;
+2026-04-06 11:49:40.039 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Balance', N'CustomerId') AND [object_id] = OBJECT_ID(N'[Wallets]'))
+    SET IDENTITY_INSERT [Wallets] ON;
+INSERT INTO [Wallets] ([Id], [Balance], [CustomerId])
+VALUES (1, 500.0, N'CUST001'),
+(2, 1000.0, N'CUST002');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Balance', N'CustomerId') AND [object_id] = OBJECT_ID(N'[Wallets]'))
+    SET IDENTITY_INSERT [Wallets] OFF;
+2026-04-06 11:49:40.057 +05:30 [INF] Database initialized successfully
+2026-04-06 11:49:40.200 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 11:49:40.397 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 11:49:40.401 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 11:49:40.404 +05:30 [INF] Hosting environment: Production
+2026-04-06 11:49:40.406 +05:30 [INF] Content root path: C:\AI-P\RetailPOS\Backend\PosApi
+2026-04-06 11:52:02.441 +05:30 [INF] Application is shutting down...
+2026-04-06 11:52:08.197 +05:30 [INF] Initializing database...
+2026-04-06 11:52:08.623 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-06 11:52:08.740 +05:30 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-04-06 11:52:08.744 +05:30 [INF] Database initialized successfully
+2026-04-06 11:52:08.790 +05:30 [INF] User profile is available. Using 'C:\Users\sathe\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 11:52:08.819 +05:30 [INF] Now listening on: http://localhost:5000
+2026-04-06 11:52:08.823 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 11:52:08.824 +05:30 [INF] Hosting environment: Production
+2026-04-06 11:52:08.825 +05:30 [INF] Content root path: C:\AI-P\RetailPOS\Backend\PosApi
+2026-04-06 11:52:55.173 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - null null
+2026-04-06 11:52:55.228 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-06 11:52:55.347 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - 404 0 null 179.8499ms
+2026-04-06 11:52:55.361 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/, Response status code: 404
+2026-04-06 11:54:00.242 +05:30 [INF] Request starting HTTP/1.1 GET http://127.0.0.1:5000/ - null null
+2026-04-06 11:54:00.253 +05:30 [INF] Request finished HTTP/1.1 GET http://127.0.0.1:5000/ - 404 0 null 11.1468ms
+2026-04-06 11:54:00.267 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://127.0.0.1:5000/, Response status code: 404
+2026-04-06 12:00:42.842 +05:30 [INF] Application is shutting down...
