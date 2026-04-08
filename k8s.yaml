@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
         - name: pos-api
-          image: airuniam/pos-api:latest
+          image: airuniam/pos-api:latest:v1
           imagePullPolicy: Always
           env:
             - name: ConnectionStrings__DefaultConnection
