@@ -1,0 +1,30 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageName: pos-api
+  tag: v1
+
+steps:
+
+- script: |
+    echo "Download ZIP from Azure Blob"
+
+    az storage blob download       --account-name <STORAGE_NAME>       --account-key <STORAGE_KEY>       --container-name artifacts       --name pos-api-1.zip       --file pos-api.zip
+  displayName: Download ZIP
+
+- script: |
+    unzip pos-api.zip -d app
+  displayName: Unzip
+
+- script: |
+    docker build -t <ACR_LOGIN_SERVER>/pos-api:v1 ./app
+  displayName: Build Docker
+
+- script: |
+    docker login <ACR_LOGIN_SERVER> -u <ACR_USERNAME> -p <ACR_PASSWORD>
+    docker push <ACR_LOGIN_SERVER>/pos-api:v1
+  displayName: Push to ACR
