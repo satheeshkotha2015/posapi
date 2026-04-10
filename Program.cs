@@ -116,7 +116,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         logger.LogInformation("Initializing database...");
-        dbContext.Database.EnsureCreated();
+        //dbContext.Database.EnsureCreated();
         logger.LogInformation("Database initialized successfully");
     }
     catch (Exception ex)
