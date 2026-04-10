@@ -1,0 +1,42 @@
+name: Build and Upload ZIP
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Publish App
+        run: dotnet publish -c Release -o publish
+
+      - name: Zip Files
+        run: |
+          cd publish
+          zip -r ../pos-api.zip .
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: |
+            {
+              "clientId": "${{ secrets.AZURE_CLIENT_ID }}",
+              "clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}",
+              "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
+              "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+            }
+
+      - name: Upload to Azure Blob
+        run: |
+          az storage blob upload             --account-name ${{ secrets.STORAGE_ACCOUNT }}             --account-key ${{ secrets.STORAGE_KEY }}             --container-name artifacts             --name pos-api-${{ github.run_number }}.zip             --file pos-api.zip
