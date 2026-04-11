@@ -126,8 +126,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Enable Swagger for development/testing
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwagger(); 
+app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "POS API V1"); });
 
 if (!app.Environment.IsDevelopment())
 {
