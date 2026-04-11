@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PosApi.Data;
@@ -124,7 +125,10 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "Error initializing database");
     }
 }
-
+var options = new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto };
+options.KnownNetworks.Clear();
+options.KnownProxies.Clear();
+app.UseForwardedHeaders(options);
 // Enable Swagger for development/testing
 app.UseSwagger(); 
 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "POS API V1"); });
